@@ -7,10 +7,15 @@ import re
 # Функция для обработки ввода чисел
 def parse_input(value):
     if value:
-        value = value.replace(' ', '').replace(',', '.')
-        if re.match(r'^[+-]?(\d+(\.\d+)?|\.\d+)$', value):
+        # Заменяем запятые на точки и удаляем лишние пробелы
+        value = value.replace(',', '.').strip()
+
+        # Обновлённое регулярное выражение
+        pattern = r'^[+-]?(\d{1,3}( \d{3})*|\.\d+|\d+(\.\d+)?|\d+ \d{3})$'
+
+        if re.match(pattern, value):
             try:
-                return Decimal(value)
+                return Decimal(value.replace(' ', ''))  # Убираем пробелы для преобразования в Decimal
             except InvalidOperation:
                 return None
     return None
