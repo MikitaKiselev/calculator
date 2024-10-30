@@ -11,7 +11,7 @@ def parse_input(value):
         value = value.replace(',', '.').strip()
 
         # Обновлённое регулярное выражение
-        pattern = r'^[+-]?(\d{1,3}( \d{3})*|\.\d+|\d+(\.\d+)?|\d+ \d{3})$'
+        pattern = r'^[+-]?(\d{1,3}( \d{3})*(\.\d+)?|\.\d+)$'
 
         if re.match(pattern, value):
             try:
