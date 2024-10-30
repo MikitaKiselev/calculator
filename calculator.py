@@ -3,7 +3,6 @@ from sympy import sympify, zoo, nan
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP, ROUND_HALF_EVEN, ROUND_DOWN
 import re
 
-
 # Функция для обработки ввода чисел
 def parse_input(value):
     if value:
@@ -11,7 +10,7 @@ def parse_input(value):
         value = value.replace(',', '.').strip()
 
         # Обновлённое регулярное выражение
-        pattern = r'^[+-]?(\d{1,3}( \d{3})*(\.\d+)?|\.\d+)$'
+        pattern = r'^[+-]?(\d{1,3}( \d{3})*(\.\d+)?|\d+(\.\d+)?)$'
 
         if re.match(pattern, value):
             try:
