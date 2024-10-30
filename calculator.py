@@ -1,5 +1,5 @@
 import streamlit as st
-from sympy import sympify, zoo
+from sympy import sympify, zoo, nan
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP, ROUND_HALF_EVEN, ROUND_DOWN
 import re
 
@@ -75,9 +75,8 @@ if st.button("Вычислить"):
 
         try:
             result = sympify(expression)
-
             # Проверяем, является ли результат неопределенным
-            if result == zoo:
+            if result in [zoo, nan]:
                 st.error("Ошибка: Деление на 0 невозможно.")
                 st.session_state.final_result = None  # Сбрасываем результат
                 st.session_state.formatted_result = None
